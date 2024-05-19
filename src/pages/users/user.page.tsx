@@ -21,13 +21,18 @@ import {
   useQueryClient,
 } from '@tanstack/react-query';
 import { Link } from 'react-router-dom';
+
+import { toast } from 'sonner';
+import { Input } from '@/components/ui/input';
+import { usersAPI } from '@/api/user.api';
+import { Checkbox } from '@/components/ui/checkbox';
+import { Button } from '@/components/ui/button';
 import {
   DropdownMenu,
   DropdownMenuCheckboxItem,
   DropdownMenuContent,
   DropdownMenuTrigger,
-} from '../../components/ui/dropdown-menu';
-import { Button } from '../../components/ui/button';
+} from '@/components/ui/dropdown-menu';
 import {
   Table,
   TableBody,
@@ -35,11 +40,7 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from '../../components/ui/table';
-import { Checkbox } from '../../components/ui/checkbox';
-import { toast } from 'sonner';
-import { Input } from '@/components/ui/input';
-import { usersAPI } from '@/api/user.api';
+} from '@/components/ui/table';
 
 export type UserType = {
   id: string;

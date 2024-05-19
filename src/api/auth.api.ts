@@ -1,5 +1,5 @@
+import axiosClient, { LoginResponse } from '@/api/axiosClient';
 import { Account } from '@/redux/authSaga';
-import axiosClient, { LoginResponse } from './axiosClient';
 
 export const authApi = {
   login(params: Account): Promise<LoginResponse> {

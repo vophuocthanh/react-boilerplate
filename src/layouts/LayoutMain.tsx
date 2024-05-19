@@ -1,6 +1,6 @@
+import Sidebar from '@/layouts/SideBar';
+import TopBar from '@/layouts/TopBar';
 import React from 'react';
-import TopBar from './TopBar';
-import Sidebar from './SideBar';
 
 interface ILayoutMainProps {
   children: React.ReactNode;

@@ -1,12 +1,11 @@
 import { useParams } from 'react-router-dom';
-import { Input } from '../../components/ui/input';
 import { useQuery } from '@tanstack/react-query';
-// import { getUserDetails } from '../../api/user.api';
 import { useState } from 'react';
-import { Button } from '../../components/ui/button';
 import axios from 'axios';
 import { usersAPI } from '@/api/user.api';
 import { toast } from 'sonner';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
 
 export default function UserDetail() {
   const { id } = useParams();
