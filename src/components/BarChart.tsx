@@ -1,4 +1,3 @@
-import React, { useState, useEffect } from 'react';
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -21,7 +20,6 @@ ChartJS.register(
   Legend
 );
 
-// Define the options for the bar chart
 export const options = {
   indexAxis: 'y' as const,
   elements: {
@@ -41,7 +39,6 @@ export const options = {
   },
 };
 
-// Define the labels and data for the bar chart
 const labels = ['KV1', 'KV2', 'KV3', 'KV4'];
 export const data = {
   labels,
@@ -61,28 +58,10 @@ export const data = {
   ],
 };
 
-type Props = {
-  style?: React.CSSProperties;
-};
-
-export function BarChart(props: Props) {
-  const [chartWidth, setChartWidth] = useState(window.innerWidth);
-
-  useEffect(() => {
-    const handleResize = () => {
-      setChartWidth(window.innerWidth);
-    };
-
-    window.addEventListener('resize', handleResize);
-
-    return () => {
-      window.removeEventListener('resize', handleResize);
-    };
-  }, []);
-
+export function BarChart() {
   return (
-    <div style={{ width: '100%', ...props.style }} className='w-full'>
-      <Bar options={options} data={data} style={{ width: chartWidth }} />
+    <div className='w-full'>
+      <Bar options={options} data={data} />
     </div>
   );
 }
