@@ -48,7 +48,7 @@ const PieChartComponent = () => {
     <div className='p-2 bg-white rounded'>
       <canvas
         ref={chartRef}
-        className='flex items-center justify-center m-0 mx-auto mt-5 mt-32 w-72 h-72'
+        className='flex items-center justify-center m-0 mx-auto mt-5 w-72 h-72'
       />
     </div>
   );
