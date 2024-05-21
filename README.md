@@ -2,7 +2,7 @@
     <img src="https://dut.gdsc.dev/static/media/full_logo.0703a97c176aa84cbc51.jpg" alt="tailwindcss" borderRadius="10px" />
   </div>
 
-<h3 align="center">React Boilerplate</h3>https://dut.gdsc.dev/static/media/full_logo.0703a97c176aa84cbc51.jpg
+<h3 align="center">React Boilerplate</h3>
 
 1. 🤖 [Introduction](#introduction)
 2. ⚙️ [Tech Stack](#tech-stack)
