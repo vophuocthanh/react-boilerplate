@@ -1,13 +1,16 @@
-import LineChartComponent from '@/components/LineChartComponent';
+import { BarChart } from '@/components/BarChart';
 import PieChartComponent from '@/components/PieChartComponent';
 
 export default function Home() {
   return (
     <div>
-      <div className='flex'>
+      <div className='flex justify-between'>
         <PieChartComponent />
-        <LineChartComponent />
+        <PieChartComponent />
+        <PieChartComponent />
+        <PieChartComponent />
       </div>
+      <BarChart />
     </div>
   );
 }
