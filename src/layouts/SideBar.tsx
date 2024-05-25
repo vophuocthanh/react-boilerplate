@@ -1,6 +1,6 @@
+import { TSidebarLinks } from '@/types/general.type';
 import { Link, useLocation } from 'react-router-dom';
-import { sidebarLinks } from '../constants/general.const';
-import { TSidebarLinks } from '../types/general.type';
+import { sidebarLinks } from '@/constants/general.const';
 
 const Sidebar = () => {
   const router = useLocation();

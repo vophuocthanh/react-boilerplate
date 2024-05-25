@@ -1,5 +1,5 @@
+import { validator } from '@/lib/validator';
 import { z } from 'zod';
-import { validator } from '../lib/validator';
 
 export const FormSchemaLogin = z.object({
   email: z

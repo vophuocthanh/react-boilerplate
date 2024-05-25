@@ -37,9 +37,6 @@ const authSlice = createSlice({
       state.logging = false;
       state.isLoggedIn = false;
     },
-    // fetchAssetListByUserId(state, action: PayloadAction<ListParams>) {
-    //   state.loading = true;
-    // },
     fetchAssetListByUserIdFailed(state, action: PayloadAction<string>) {
       state.loading = false;
       state.error = action.payload;
@@ -47,10 +44,6 @@ const authSlice = createSlice({
     fetchUserInfo(state) {
       state.loading = true;
     },
-    // fetchUserInfoSuccess(state, action: PayloadAction<UserInfo>) {
-    //   state.loading = false;
-    //   state.userInfo = action.payload;
-    // },
     fetchUserInfoFailed(state, action: PayloadAction<string>) {
       state.loading = false;
       state.error = action.payload;
@@ -59,12 +52,6 @@ const authSlice = createSlice({
 });
 
 export const authActions = authSlice.actions;
-// export const selectLoginLoading = (state: RootState) => state.auth.loading;
-// export const selectIsLoggedIn = (state: RootState) => state.auth.isLoggedIn;
-// export const selectLoginFailed = (state: RootState) => state.auth.error;
-// export const selectLogging = (state: RootState) => state.auth.logging;
-// export const selectError = (state: RootState) => state.auth.error;
-// export const selectUserInfo = (state: RootState) => state.auth.userInfo;
 
 const authReducer = authSlice.reducer;
 export default authReducer;

@@ -24,23 +24,9 @@ function* handleLogin(action: PayloadAction<Account>) {
     yield put(authActions.loginFailed(error.message));
   }
 }
-// function* fetchUserInfoSaga() {
-//   try {
-//     const response: UserInfo = yield call(authApi.getUserInfo);
-//     yield put(authActions.fetchUserInfoSuccess(response));
-//   } catch (error: any) {
-//     yield put(authActions.loginFailed(error.message));
-//   }
-// }
-// function* handleLogout() {
-//   yield localStorage.clear();
-//   yield call(history.push, "/");
-// }
 
 function* watchLoginFlow() {
   yield takeLatest(authActions.login.type, handleLogin);
-  // yield takeLatest(authActions.fetchUserInfo.type, fetchUserInfoSaga);
-  // yield takeLatest(authActions.logout.type, handleLogout);
 }
 
 export default function* authSaga() {

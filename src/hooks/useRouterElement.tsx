@@ -13,10 +13,6 @@ export default function useRoutesElements() {
     { path: '/register', element: <Register /> },
     { path: '/users', element: <LayoutMain children={<UserPage />} /> },
     { path: '/users/:id', element: <LayoutMain children={<UserDetail />} /> },
-    // {
-    //   path: '/users/create',
-    //   element: <LayoutMain children={<UserCreate />} />,
-    // },
     { path: '*', element: <h1>404</h1> },
   ]);
   return routeElements;
