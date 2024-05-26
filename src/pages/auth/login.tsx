@@ -54,7 +54,7 @@ export function Login() {
       <Form {...form}>
         <form
           onSubmit={form.handleSubmit(onSubmit)}
-          className='p-10 space-y-6 border rounded w-[30rem]'
+          className='p-10 space-y-6 border rounded w-[30rem] shadow-md'
         >
           <h1 className='flex justify-center text-3xl font-bold'>Login</h1>
           <FormField

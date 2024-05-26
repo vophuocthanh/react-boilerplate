@@ -1,6 +1,6 @@
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { toast } from 'sonner';
 import {
   Form,
@@ -53,7 +53,7 @@ export function Register() {
       <Form {...form}>
         <form
           onSubmit={form.handleSubmit(onSubmit)}
-          className='p-10 space-y-6 border rounded w-96'
+          className='p-10 space-y-6 border rounded shadow-md w-96'
         >
           <h1 className='flex justify-center text-3xl font-bold'>Register</h1>
           <FormField
@@ -111,6 +111,16 @@ export function Register() {
           <Button type='submit' className='flex ml-auto' loading={isLoading}>
             Submit
           </Button>
+
+          <p className='font-medium'>
+            Do you already have an account?{' '}
+            <Link
+              to='/login'
+              className='text-blue-600 underline cursor-pointer'
+            >
+              Login
+            </Link>
+          </p>
         </form>
       </Form>
     </div>
