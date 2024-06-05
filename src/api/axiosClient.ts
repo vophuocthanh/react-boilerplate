@@ -1,34 +1,33 @@
-import axios, { AxiosResponse } from 'axios';
+import config from '@/configs';
+import HttpStatusCode from '@/constants/http';
+import { useAppDispatch } from '@/redux/hooks';
 import { appAction } from '@/redux/store/appSlice';
 import { history } from '@/utils/history';
-import { useAppDispatch } from '@/redux/hooks';
-const baseURL = import.meta.env.VITE_API_URL;
+import { getRefreshTokenFromLS } from '@/utils/storage';
+import axios, { AxiosResponse } from 'axios';
 
 export interface LoginResponse {
-  access: string;
-  refresh: string;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  [key: string]: any;
+  access_token: string;
+  refresh_token: string;
+  [key: string]: string;
 }
 
-const getLocalRefreshToken = () => {
-  const token = localStorage.getItem('refresh');
-  return token;
-};
 const updateLocalAccessToken = (res: LoginResponse) => {
-  localStorage.setItem('access', res.access);
-  localStorage.setItem('refresh', res.refresh);
+  localStorage.setItem('access_token', res.access_token);
+  localStorage.setItem('refresh_token', res.refresh_token);
 };
+
 const axiosClient = axios.create({
-  baseURL,
+  baseURL: config.baseUrl,
   headers: {
     'Content-Type': 'application/json',
   },
 });
+
 // Add a request interceptor
 axiosClient.interceptors.request.use(
   function (config) {
-    const token = localStorage.getItem('access');
+    const token = localStorage.getItem('access_token');
     if (token) {
       config.headers.Authorization = `Bearer ${token}`;
     }
@@ -47,17 +46,18 @@ axiosClient.interceptors.response.use(
   async function (error) {
     const originalConfig = error.config;
     const dispatch = useAppDispatch();
-    if (error.response.status === 403) {
+    if (error.response?.status === HttpStatusCode.Forbidden) {
       await dispatch(appAction.setAPIState(403));
     }
-    if (error.response.status === 401) {
+    if (error.response?.status === HttpStatusCode.Unauthorized) {
       try {
         const url = `${originalConfig.baseURL}/auth/refresh-token`;
-        const result = await getLocalRefreshToken();
-        const rs: LoginResponse = await axios.post(url, {
+        const result = await getRefreshTokenFromLS();
+        const rs = await axios.post(url, {
           refresh_token: result,
         });
-        updateLocalAccessToken(rs.data);
+        const loginResponse: LoginResponse = rs.data as LoginResponse;
+        updateLocalAccessToken(loginResponse);
         return axiosClient(originalConfig);
       } catch (_error) {
         localStorage.clear();
@@ -68,4 +68,5 @@ axiosClient.interceptors.response.use(
     return Promise.reject(error);
   }
 );
+
 export default axiosClient;

@@ -1,5 +1,5 @@
 import axiosClient from '@/api/axiosClient';
-import { IUser } from '@/lib/interface';
+import { IUser } from '@/interface/users';
 
 export const usersAPI = {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any

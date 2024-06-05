@@ -1,14 +1,10 @@
-import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
+import { useForm } from 'react-hook-form';
 import { Link, useNavigate } from 'react-router-dom';
 import { toast } from 'sonner';
 
-import { FormSchemaLogin } from '@/utils/schema';
-import { useState } from 'react';
-import { useMutation } from '@tanstack/react-query';
 import { authApi } from '@/api/auth.api';
-import { Account } from '@/redux/authSaga';
-import { setAccessTokenToLS, setRefreshTokenToLS } from '@/utils/storage';
+import { Button } from '@/components/ui/button';
 import {
   Form,
   FormControl,
@@ -18,10 +14,16 @@ import {
   FormMessage,
 } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
-import { Button } from '@/components/ui/button';
+import { AppContext, AppContextType } from '@/contexts/app.context';
+import { Account } from '@/redux/authSaga';
+import { FormSchemaLogin } from '@/utils/schema';
+import { setAccessTokenToLS, setRefreshTokenToLS } from '@/utils/storage';
+import { useMutation } from '@tanstack/react-query';
+import { useContext, useState } from 'react';
 
 export function Login() {
   const navigate = useNavigate();
+  const { setIsAuthenticated } = useContext<AppContextType>(AppContext);
   const [isLoading, setIsLoading] = useState(false);
   const form = useForm({
     resolver: zodResolver(FormSchemaLogin),
@@ -41,6 +43,7 @@ export function Login() {
       onSuccess: (data) => {
         setAccessTokenToLS(data.access);
         setRefreshTokenToLS(data.refresh);
+        setIsAuthenticated(true);
         navigate('/');
       },
       onError: (error) => {

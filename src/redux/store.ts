@@ -1,9 +1,9 @@
-import { combineReducers, configureStore } from '@reduxjs/toolkit';
-import createSagaMiddleware from 'redux-saga';
-import authReducer from '@/redux/store/appSlice';
-import { routerMiddleware } from 'react-router-redux';
-import { history } from '@/utils/history';
 import rootSaga from '@/redux/rootSaga';
+import authReducer from '@/redux/store/appSlice';
+import { history } from '@/utils/history';
+import { combineReducers, configureStore } from '@reduxjs/toolkit';
+import { routerMiddleware } from 'react-router-redux';
+import createSagaMiddleware from 'redux-saga';
 
 const rootReducer = combineReducers({
   auth: authReducer,
@@ -11,8 +11,7 @@ const rootReducer = combineReducers({
 const sagaMiddleware = createSagaMiddleware();
 export const store = configureStore({
   reducer: rootReducer,
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  middleware: (getDefaultMiddleware: any) =>
+  middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat(sagaMiddleware, routerMiddleware(history)),
 });
 sagaMiddleware.run(rootSaga);

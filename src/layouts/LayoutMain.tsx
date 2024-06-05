@@ -1,5 +1,5 @@
-import Sidebar from '@/layouts/SideBar';
-import TopBar from '@/layouts/TopBar';
+import Sidebar from '@/components/SideBar';
+import TopBar from '@/components/TopBar';
 import React from 'react';
 
 interface ILayoutMainProps {

@@ -1,11 +1,11 @@
 export const LocalStorageEventTarget = new EventTarget();
 
-export const setAccessTokenToLS = (access: string) => {
-  localStorage.setItem('access', access);
+export const setAccessTokenToLS = (access_token: string) => {
+  localStorage.setItem('access_token', access_token);
 };
 
-export const setRefreshTokenToLS = (refresh: string) => {
-  localStorage.setItem('refresh', refresh);
+export const setRefreshTokenToLS = (refresh_token: string) => {
+  localStorage.setItem('refresh_token', refresh_token);
 };
 
 export const clearLS = () => {

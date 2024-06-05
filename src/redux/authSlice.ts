@@ -37,17 +37,6 @@ const authSlice = createSlice({
       state.logging = false;
       state.isLoggedIn = false;
     },
-    fetchAssetListByUserIdFailed(state, action: PayloadAction<string>) {
-      state.loading = false;
-      state.error = action.payload;
-    },
-    fetchUserInfo(state) {
-      state.loading = true;
-    },
-    fetchUserInfoFailed(state, action: PayloadAction<string>) {
-      state.loading = false;
-      state.error = action.payload;
-    },
   },
 });
 

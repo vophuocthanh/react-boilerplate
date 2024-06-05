@@ -1,6 +1,9 @@
-import { Link, useNavigate } from 'react-router-dom';
+import { AppContext, AppContextType } from '@/contexts/app.context';
 import { LogOut, User } from 'lucide-react';
+import { useContext } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import { toast } from 'sonner';
+import logo from '../assets/logo.webp';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -10,7 +13,6 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from '../components/ui/dropdown-menu';
-import logo from '../assets/logo.webp';
 
 const TopBar = () => {
   return (
@@ -33,8 +35,10 @@ function Logo() {
 
 function UserAdmin() {
   const navigate = useNavigate();
+  const { setIsAuthenticated } = useContext<AppContextType>(AppContext);
   const logout = () => {
     localStorage.clear();
+    setIsAuthenticated(false);
     navigate('/login');
     toast.success('Logout successfully!');
   };
