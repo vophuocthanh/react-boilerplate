@@ -15,6 +15,7 @@ import {
 } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
 import { AppContext, AppContextType } from '@/contexts/app.context';
+import LoginWithGoogle from '@/pages/auth/LoginWithGoogle';
 import { Account } from '@/redux/authSaga';
 import { FormSchemaLogin } from '@/utils/schema';
 import { setAccessTokenToLS, setRefreshTokenToLS } from '@/utils/storage';
@@ -86,6 +87,7 @@ export function Login() {
               </FormItem>
             )}
           />
+          <LoginWithGoogle />
           <Button type='submit' className='flex ml-auto' loading={isLoading}>
             Submit
           </Button>
